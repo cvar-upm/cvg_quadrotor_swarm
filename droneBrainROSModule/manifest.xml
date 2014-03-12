@@ -1,0 +1,21 @@
+<package>
+  <description brief="droneBrainROSModule">
+
+     droneBrainROSModule
+
+  </description>
+  <author>Jesus Pestana Puerta</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/droneBrainROSModule</url>
+  <depend package="droneModuleROS"/>
+  <depend package="droneMsgsROS"/>
+  <depend package="sensor_msgs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="lib_cvgutils"/>
+  <depend package="droneModuleInterfaceROS"/>
+  
+
+</package>
+
+

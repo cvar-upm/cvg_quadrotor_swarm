@@ -1,0 +1,22 @@
+# Temporary files
+*~
+builds
+
+#logs
+logs/drone_logger
+
+
+
+# documents appeared after JL repaired the compilation process in my computer (after Ubuntu 12.10 installation)
+*pre1
+
+
+
+#OLD_STACK
+
+#others
+documentation/IMAV_Frames
+documentation/configuration_files.txt
+documentation/DroneArchitectureBrain.PDF
+
+

@@ -1,0 +1,157 @@
+/*
+ * config_controller_Pelican.h
+ *
+ *  Created on: Nov 26, 2012
+ *      Author: jespestana
+ */
+
+#ifndef CONFIG_CONTROLLER_PELICAN_H_
+#define CONFIG_CONTROLLER_PELICAN_H_
+
+#define MULTIROTOR_SPEEDCONTROLLER_TS 		0.060 // sampling time in seconds
+
+//#define MULTIROTOR_INIT_CONTROLMODE_IS_SPEED_CONTROL
+#define MULTIROTOR_INIT_CONTROLMODE_IS_POSITION_CONTROL
+
+#include "controller/midlevelCnt/control/Controller_MidLevel_controlModes.h"
+#include "controller/stateMachine/Controller_SM_stateNames.h"
+#ifdef MULTIROTOR_INIT_CONTROLMODE_IS_SPEED_CONTROL
+#define MULTIROTOR_INIT_CONTROLMODE 		Controller_MidLevel_controlMode::SPEED_CONTROL
+#define MULTIROTOR_INIT_CONTROLMODE_SM 		SM_stateNames::SPEED_CONTROL
+#else
+#define MULTIROTOR_INIT_CONTROLMODE 		Controller_MidLevel_controlMode::POSITION_CONTROL
+#define MULTIROTOR_INIT_CONTROLMODE_SM 		SM_stateNames::POSITION_CONTROL
+#endif
+
+
+/* ***** General saturations - Controller Configuration ***** */
+
+// Max values for action commands in "tanto por 1"
+#define MULTIROTOR_SPEEDCONTROLLER_DYAWMAX 		0.4
+#define MULTIROTOR_SPEEDCONTROLLER_DZMAX 		0.5
+#define MULTIROTOR_SPEEDCONTROLLER_MAX_PITCH 	1.0
+#define MULTIROTOR_SPEEDCONTROLLER_MAX_ROLL  	1.0
+
+// Max reference speeds, speed control loop
+#define MULTIROTOR_SPEEDCONTROLLER_VXY_MAX 			0.50 // m/s
+#define MULTIROTOR_TRAJECTORYCONTROLLER_VXY_AT_MAX 	((    0.75) * MULTIROTOR_SPEEDCONTROLLER_VXY_MAX ) // m/s
+#define MULTIROTOR_TRAJECTORYCONTROLLER_VXY_CT_MAX 	((1 - 0.75) * MULTIROTOR_SPEEDCONTROLLER_VXY_MAX ) // m/s
+#define MULTIROTOR_TRAJECTORYCONTROLLER_VZ_AT_MAX 	((    0.75) * MULTIROTOR_SPEEDCONTROLLER_DZMAX)  // m/s
+#define MULTIROTOR_TRAJECTORYCONTROLLER_VZ_CT_MAX 	((1 - 0.75) * MULTIROTOR_SPEEDCONTROLLER_DZMAX)  // m/s
+
+// Controller - tilt reference low pass filter configuration
+#define MULTIROTOR_TILT_REFERENCE_CUTOFF_TR 		0.30	// seg
+#define MULTIROTOR_DYAW_REFERENCE_CUTOFF_TR 		0.30	// seg
+#define MULTIROTOR_DALT_REFERENCE_CUTOFF_TR 		0.30	// seg
+
+/* END: ***** General saturations - Controller Configuration ***** */
+
+
+
+/* ***** State Machine Controller Configuration ***** */
+
+// Safety zones during trajectory navigation
+#define SM_TRAJECTORYMODE_TILTFO_TR 	  		  ( 0.30 ) // seg
+#define SM_TRAJECTORYMODE_TILTFO_RAD2TILTREF	  (12*M_PI/180) // rad to 1/1 pelican input
+//#define SM_TRAJECTORYMODE_ACTIVATE_TILTFO
+// Straight mode
+#define SM_STRAIGHTMODE_SAFETYZONE_THRESHOLD 	  ( 1 ) // m
+// Turn mode
+#define SM_TURNMODE_RADIUS_SAFETYZONE_THRESHOLD   ( 1 ) // m
+#define SM_TURNMODE_ALTITUDE_SAFETYZONE_THRESHOLD ( 1 ) // m
+#define SM_TURNMODE_NEGALPHA_SAFETYZONE_THRESHOLD ( -5.0 * M_PI/180.0 ) // -5 deg
+
+// Trajectory planning configuration parameters
+#define SM_CHECKPOINT_CLEARANCE_RADIUS 	0.7
+
+#define SM_TRAJPLAN_CHECKPOINT_RADIUS 	0.25
+//#define SM_TRAJPLAN_RTMIN 				0.20	// corresponde a ALPHAMIN  75.0deg y SM_TRAJPLAN_CHECKPOINT_RADIUS 0.25m
+//#define SM_TRAJPLAN_RTMAX 				40.0	// corresponde a ALPHAMIN 171.0deg y SM_TRAJPLAN_CHECKPOINT_RADIUS 0.25m
+#define SM_TRAJPLAN_TURN_ALPHAMIN		75.0	// deg
+#define SM_TRAJPLAN_RTMIN 				( (SM_TRAJPLAN_CHECKPOINT_RADIUS/2.0) * sin(( SM_TRAJPLAN_TURN_ALPHAMIN *M_PI/180.0)/2.0)/(1-sin(( SM_TRAJPLAN_TURN_ALPHAMIN *M_PI/180.0)/2.0)) )
+#define SM_TRAJPLAN_TURN_ALPHAMAX		171.0	// deg
+#define SM_TRAJPLAN_RTMAX 				( (SM_TRAJPLAN_CHECKPOINT_RADIUS/2.0) * sin(( SM_TRAJPLAN_TURN_ALPHAMAX *M_PI/180.0)/2.0)/(1-sin(( SM_TRAJPLAN_TURN_ALPHAMAX *M_PI/180.0)/2.0)) )
+
+
+#define SM_SPEEDPLAN_AMAX   			0.50
+#define SM_SPEEDPLAN_SPEED_TR			1.7
+#define SM_SPEEDPLAN_DELTACHECKPOINT 	5
+#define SM_SPEEDPLAN_STALLTURN_VMAX 	0.25
+
+//#define SM_STATEMACHINE_DEBUG
+
+/* END: ***** State Machine Controller Configuration ***** */
+
+
+
+/* ***** Trajectory Controller Configuration ***** */
+/* END: ***** Trajectory Controller Configuration ***** */
+
+
+
+/* ***** Position Controller Configuration ***** */
+
+// Nuevas ganancias MATLAB:
+// Kp = 1.6838
+// Td = 0.11 seg
+
+#define MULTIROTOR_POSITIONCONTROLLER_VXVY_DELTA_KP (0.5)
+
+// x, y PID gains: Kp, Ki = Kp/Ti, Kd = Kp*Td
+//#define MULTIROTOR_POSITIONCONTROLLER_VXVY_KP 	MULTIROTOR_POSITIONCONTROLLER_VXVY_DELTA_KP*2.0400
+//#define MULTIROTOR_POSITIONCONTROLLER_VXVY_KI 	MULTIROTOR_POSITIONCONTROLLER_VXVY_DELTA_KP*0.0
+//#define MULTIROTOR_POSITIONCONTROLLER_VXVY_KD 	(MULTIROTOR_POSITIONCONTROLLER_VXVY_DELTA_KP*2.0400)*0.5
+#define MULTIROTOR_POSITIONCONTROLLER_VXVY_KP 	MULTIROTOR_POSITIONCONTROLLER_VXVY_DELTA_KP*1.6838
+#define MULTIROTOR_POSITIONCONTROLLER_VXVY_KI 	MULTIROTOR_POSITIONCONTROLLER_VXVY_DELTA_KP*0.0
+#define MULTIROTOR_POSITIONCONTROLLER_VXVY_KD 	(MULTIROTOR_POSITIONCONTROLLER_VXVY_DELTA_KP*1.6838)*1.0
+
+/* END: ***** Position Controller Configuration ***** */
+
+
+
+/* ***** Speed Controller Configuration ***** */
+
+// I use this constants to fine tune arround values that worked well in simulation.
+// The speedController simulation using the EKF already required a 0.1 correction to work properly
+// (0.1/2) // con esta funciona muy bien (con RANSAC y correccion 3D)
+// (0.1)   // Nacho dice que responde mas rapido
+// (0.1*2) // a ver esto
+#define CONTROLLER_DEACTIVATE_NLF
+
+#ifdef CONTROLLER_DEACTIVATE_NLF
+// The constant MULTIROTOR_SPEEDCONTROLLER_VXVY_DELTA_KP_CORRECTION is the (slope)^-1 in the origin of the aerodynamic friction curve.
+// The nlf_pitch and nlf_roll are the inverse of the aerodynamic friction, so MULTIROTOR_SPEEDCONTROLLER_VXVY_DELTA_KP_CORRECTION is their slope in the origin.
+#define MULTIROTOR_SPEEDCONTROLLER_VXVY_DELTA_KP_CORRECTION 	1.0
+#define MULTIROTOR_SPEEDCONTROLLER_VXVY_DELTA_KP 				(0.1) * MULTIROTOR_SPEEDCONTROLLER_VXVY_DELTA_KP_CORRECTION
+#else
+#define MULTIROTOR_SPEEDCONTROLLER_VXVY_DELTA_KP (0.1)
+#endif
+#define MULTIROTOR_SPEEDCONTROLLER_YAW_DELTA_KP  0.1
+// parrot: 0.5
+#define MULTIROTOR_SPEEDCONTROLLER_Z_DELTA_KP    0.5
+
+#define CONTROLLER_DEACTIVATE_NLF
+
+// Vx PID gains: Kp, Ki = Kp/Ti, Kd = Kp*Td
+#define MULTIROTOR_SPEEDCONTROLLER_VX_KP MULTIROTOR_SPEEDCONTROLLER_VXVY_DELTA_KP*7.1521
+#define MULTIROTOR_SPEEDCONTROLLER_VX_KI MULTIROTOR_SPEEDCONTROLLER_VXVY_DELTA_KP*7.1521 /(5.0)
+#define MULTIROTOR_SPEEDCONTROLLER_VX_KD MULTIROTOR_SPEEDCONTROLLER_VXVY_DELTA_KP*1.5534 *(0.0)
+
+// Vy PID gains: Kp, Ki = Kp/Ti, Kd = Kp*Td
+#define MULTIROTOR_SPEEDCONTROLLER_VY_KP MULTIROTOR_SPEEDCONTROLLER_VXVY_DELTA_KP*7.3059
+#define MULTIROTOR_SPEEDCONTROLLER_VY_KI MULTIROTOR_SPEEDCONTROLLER_VXVY_DELTA_KP*7.3059 /(2.0)
+#define MULTIROTOR_SPEEDCONTROLLER_VY_KD MULTIROTOR_SPEEDCONTROLLER_VXVY_DELTA_KP*0.0
+
+// Yaw PID gains: Kp, Ki = Kp/Ti, Kd = Kp*Td
+#define MULTIROTOR_SPEEDCONTROLLER_YAW_KP MULTIROTOR_SPEEDCONTROLLER_YAW_DELTA_KP*5.6000
+#define MULTIROTOR_SPEEDCONTROLLER_YAW_KI MULTIROTOR_SPEEDCONTROLLER_YAW_DELTA_KP*0.0000
+#define MULTIROTOR_SPEEDCONTROLLER_YAW_KD MULTIROTOR_SPEEDCONTROLLER_YAW_DELTA_KP*0.6720
+
+// Z PID gains: Kp, Ki = Kp/Ti, Kd = Kp*Td
+#define MULTIROTOR_SPEEDCONTROLLER_Z_KP MULTIROTOR_SPEEDCONTROLLER_Z_DELTA_KP*(1.3339)
+#define MULTIROTOR_SPEEDCONTROLLER_Z_KI MULTIROTOR_SPEEDCONTROLLER_Z_DELTA_KP*0.0000
+#define MULTIROTOR_SPEEDCONTROLLER_Z_KD MULTIROTOR_SPEEDCONTROLLER_Z_DELTA_KP*(0.3468)
+
+/* END: ***** Speed Controller Configuration ***** */
+
+#endif /* CONFIG_CONTROLLER_PELICAN_H_ */

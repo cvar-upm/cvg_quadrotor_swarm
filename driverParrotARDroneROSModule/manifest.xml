@@ -1,0 +1,42 @@
+<package>
+  <description brief="driverParrotARDrone">
+
+     driverParrotARDrone
+  
+  </description>
+  <author>Jose Luis Sanchez Lopez</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/driverParrotARDrone</url>
+  
+
+  <depend package="ardrone_autonomy"/>
+  
+  <depend package="droneModuleROS"/>
+  
+  <depend package="roscpp"/>
+  
+  
+  <depend package="sensor_msgs"/>
+<!--
+  <depend package="opencv2"/>
+  <depend package="cv_bridge"/>
+  -->
+  
+  <depend package="std_msgs"/>
+  <depend package="image_transport"/>
+  
+  <depend package="droneMsgsROS"/>
+  
+  <depend package="geometry_msgs"/>
+  
+  <!--
+   <export>
+      <cpp cflags="-I${prefix}/src/include" lflags="-L${prefix}/lib -ldriverParrotARDrone"/>
+    </export>
+  -->
+  
+
+</package>
+
+

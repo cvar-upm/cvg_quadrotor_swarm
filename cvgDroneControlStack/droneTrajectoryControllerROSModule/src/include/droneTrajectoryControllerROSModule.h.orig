@@ -1,0 +1,91 @@
+#ifndef DRONETRAJECTORYCONTROLLERROSMODULE_H
+#define DRONETRAJECTORYCONTROLLERROSMODULE_H
+
+#include "ros/ros.h"
+#include "droneModuleROS.h"
+#include "communication_definition.h"
+#include "droneTrajectoryController.h"
+//Drone msgs
+#include "droneMsgsROS/droneNavCommand.h"
+#include "droneMsgsROS/dronePitchRollCmd.h"
+#include "droneMsgsROS/droneDYawCmd.h"
+#include "droneMsgsROS/droneDAltitudeCmd.h"
+#include "droneMsgsROS/dronePose.h"
+#include "droneMsgsROS/droneSpeeds.h"
+#include "droneMsgsROS/dronePositionTrajectoryRefCommand.h"
+#include "std_msgs/Int16.h"             //Control mode
+//Services
+#include "droneTrajectoryControllerROSModule/setControlMode.h"
+
+class DroneTrajectoryControllerROSModule : public DroneModule {
+public:
+    DroneTrajectoryControllerROSModule();
+    ~DroneTrajectoryControllerROSModule();
+
+    // DroneModule stuff: reset, start, stop, run, init, open, close
+private:
+    void init();
+    void close();
+protected:
+    bool resetValues();
+    bool startVal();
+    bool stopVal();
+public:
+    bool run();
+    void open(ros::NodeHandle & nIn, std::string moduleName);
+
+private:
+    DroneTrajectoryController drone_trajectory_controller;
+    bool setControlModeVal(Controller_MidLevel_controlMode::controlMode mode);
+
+    // Subscribers
+private:
+    ros::Subscriber dronePositionRefSub;
+    void dronePositionRefsSubCallback(const droneMsgsROS::dronePose::ConstPtr &msg);
+    ros::Subscriber droneSpeedsRefSub;
+    void droneSpeedsRefsSubCallback(const droneMsgsROS::droneSpeeds::ConstPtr &msg);
+    ros::Subscriber droneTrajectoryRefSub;
+    void droneTrajectoryRefCommandCallback(const droneMsgsROS::dronePositionTrajectoryRefCommand::ConstPtr& msg);
+    droneMsgsROS::dronePositionTrajectoryRefCommand last_trajectory_command;
+    bool stay_in_position;
+
+    // [Subscribers] State estimation: controller feedback inputs
+private:
+    ros::Subscriber droneEstimatedPoseSubs;
+    void droneEstimatedPoseCallback(const droneMsgsROS::dronePose::ConstPtr& msg);
+    droneMsgsROS::dronePose last_estimatedPose;
+    ros::Subscriber droneEstimatedSpeedsSubs;
+    void droneEstimatedSpeedsCallback(const droneMsgsROS::droneSpeeds::ConstPtr& msg);
+    droneMsgsROS::droneSpeeds last_estimatedSpeed;
+
+    // Publishers
+private:
+    ros::Publisher controlModePub;
+    std_msgs::Int16 controlModeMsg;
+    void controlModePublish();
+<<<<<<< HEAD
+    ros::Publisher droneCommandPitchRollPubl;
+    ros::Publisher droneCommandDYawPubl;
+    ros::Publisher droneCommandDAltitudePubl;
+    droneMsgsROS::dronePitchRollCmd drone_command_pitch_roll_msg;
+    droneMsgsROS::droneDAltitudeCmd drone_command_daltitude_msg;
+    droneMsgsROS::droneDYawCmd      drone_command_dyaw_msg;
+=======
+    ros::Publisher drone_command_pitch_roll_publisher;
+    ros::Publisher drone_command_dyaw_publisher;
+    ros::Publisher drone_command_daltitude_publisher;
+    droneMsgs::dronePitchRollCmd drone_command_pitch_roll_msg;
+    droneMsgs::droneDAltitudeCmd drone_command_daltitude_msg;
+    droneMsgs::droneDYawCmd      drone_command_dyaw_msg;
+>>>>>>> ac3e620d86c7166658c76b8a366cc9b53ef5a4a5
+    int publishDroneNavCommand(void);
+    void setNavCommand(float pitch, float roll, float dyaw, float dz, double time=-1.0);
+    void setNavCommandToZero();
+
+    // Service servers
+private:
+    ros::ServiceServer setControlModeServerSrv;
+    bool setControlModeServCall(droneTrajectoryControllerROSModule::setControlMode::Request& request, droneTrajectoryControllerROSModule::setControlMode::Response& response);
+};
+
+#endif // DRONETRAJECTORYCONTROLLERROSMODULE_H

@@ -1,0 +1,23 @@
+<package>
+  <description brief="droneEKFStateEstimatorROSModule">
+
+     droneEKFStateEstimatorROSModule
+
+  </description>
+  <author>Jesus Pestana Puerta</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/droneEKFStateEstimatorROSModule</url>
+
+  <!-- dependencies -->
+  <depend package="roscpp"/>
+  <depend package="droneModuleROS"/>
+  <depend package="droneMsgsROS"/>
+  <depend package="geometry_msgs"/>
+  <depend package="droneEKFStateEstimator"/>
+  <depend package="lib_cvglogger"/>
+  <depend package="lib_cvgloggerROS"/>
+
+</package>
+
+

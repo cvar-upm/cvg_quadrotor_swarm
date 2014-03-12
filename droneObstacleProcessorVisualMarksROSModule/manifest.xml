@@ -1,0 +1,29 @@
+<package>
+  <description brief="droneObstacleProcessorVisualMarksROSModule">
+
+     droneObstacleProcessorVisualMarksROSModule
+
+  </description>
+  <author>Paloma de la Puente and Jose Luis Sánchez López</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/droneObstacleProcessorVisualMarksROSModule</url>
+  
+  <depend package="roscpp"/>
+  <!-- <depend package="std_msgs"/> -->
+  <depend package="droneMsgsROS"/>
+  <depend package="droneModuleROS"/>
+  
+  <depend package="droneObstacleProcessorVisualMarks"/>
+
+  
+  <!--
+  <export>
+  	<cpp cflags="-I${prefix}/src/include" lflags="-L${prefix}/lib -ldroneObstacleProcessor"/>
+  </export> -->
+  
+
+
+</package>
+
+

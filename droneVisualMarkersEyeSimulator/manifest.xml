@@ -1,0 +1,25 @@
+<package>
+  <description brief="droneVisualMarkersEyeSimulator">
+
+     droneVisualMarkersEyeSimulator
+
+  </description>
+  <author>Paloma de la Puente and Jose Luis Sánchez López</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/droneVisualMarkersEyeSimulator</url>
+  
+  <depend package="lib_pugixml"/>
+  <depend package="referenceFrames"/>
+  <depend package="lib_cvgutils"/>
+  
+  
+  <export>
+  	<cpp cflags="-I${prefix}/src/include" lflags="-L${prefix}/lib -ldroneVisualMarkersEyeSimulator"/>
+  </export>
+  
+
+
+</package>
+
+

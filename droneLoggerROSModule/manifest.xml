@@ -1,0 +1,28 @@
+<package>
+  <description brief="droneLoggerROSModule">
+
+     droneLoggerROSModule
+
+  </description>
+  <author>Jesus Pestana Puerta</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/droneLoggerROSModule</url>
+
+  <depend package="roscpp"/>
+
+  <depend package="std_msgs"/>
+  <depend package="lib_cvglogger"/>
+  <depend package="lib_cvgloggerROS"/>
+  <depend package="droneModuleROS"/>
+  <depend package="droneMsgsROS"/>
+  <depend package="geometry_msgs"/>
+  <depend package="sensor_msgs"/>
+
+<depend package="image_transport"/>
+<depend package="opencv2"/>
+<depend package="cv_bridge"/>
+
+</package>
+
+

@@ -1,0 +1,23 @@
+<package>
+  <description brief="lib_pugixml">
+
+     lib_pugixml
+
+  </description>
+  <author>Jose Luis Sanchez Lopez</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/lib_pugixml</url>
+  
+  <!--
+  <depend package="roscpp"/>
+  -->
+  
+  <export>
+  	<cpp cflags="-I${prefix}/src/include" lflags="-L${prefix}/lib -llib_pugixml"/>
+  </export>
+
+
+</package>
+
+

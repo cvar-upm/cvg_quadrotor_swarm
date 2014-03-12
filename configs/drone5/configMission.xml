@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<mission description="Mission 1">
+	<config>
+		<precission>
+			<x>0.2</x>
+			<y>0.2</y>
+			<z>0.2</z>
+			<yaw>10</yaw> <!--deg-->
+		</precission>
+	</config>
+	<submission description="01 - Take-off, hover">
+		<config>
+			<id>1</id>
+		</config>
+		<task description=".1 - Take-off">
+			<config>
+				<id>01</id>
+			</config>
+			<command>takeOff</command>
+		</task>
+		<task description=".3 - zMove">
+			<config>
+				<id>03</id>
+			</config>
+			<command>move</command>
+			<point>
+				<z>1</z>
+			</point>
+			<pointToLook> <!-- column C8-->
+				<x>3.25</x>
+				<y>9</y>
+			</pointToLook>
+		</task>
+		<task description=".4 - sleep">
+			<config>
+				<id>04</id>
+				<time>3</time>
+			</config>
+			<command>sleep</command>
+		</task>
+	</submission>
+	<submission description="02 - navigation">
+		<config>
+			<id>2</id>
+			<loop>0</loop>
+		</config>
+		<task description="id:7 Move to point D5F looking at column C8">
+			<config>
+				<id>7</id>
+			</config>
+			<command>move</command>
+			<point> <!-- point D5F -->
+				<x>4.5</x>
+				<y>18</y>
+				<z>1.33</z>
+			</point>
+			<pointToLook> <!-- column C8 -->
+				<x>3.25</x>
+				<y>9</y>
+			</pointToLook>
+		</task>
+	</submission>
+	<submission description="N - sleep, land">
+		<config>
+			<id>4</id>
+		</config>
+		<task description=".2 - sleep for at least 1 secs">
+			<config>
+				<id>02</id>
+				<time>5</time>
+			</config>
+			<command>sleep</command>
+		</task>
+		<task description=".3 - land">
+			<config>
+				<id>03</id>
+			</config>
+			<command>land</command>
+		</task>
+	</submission>
+</mission>

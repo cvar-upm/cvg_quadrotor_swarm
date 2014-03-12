@@ -1,0 +1,24 @@
+<package>
+  <description brief="droneModuleInterfaceROS">
+
+     droneModuleInterfaceROS
+
+  </description>
+  <author>Jose Luis Sanchez Lopez</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/droneModuleInterfaceROS</url>
+  
+  <depend package="roscpp"/>
+  <depend package="std_msgs"/>
+  <depend package="lib_cvgutils"/>
+  <depend package="droneMsgsROS"/>
+  
+   <export>
+      <cpp cflags="-I${prefix}/src/include" lflags="-L${prefix}/lib -ldroneModuleInterfaceROS"/>
+    </export>
+
+
+</package>
+
+

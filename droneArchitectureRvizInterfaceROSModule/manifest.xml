@@ -1,0 +1,21 @@
+<package>
+  <description brief="droneArchitectureRvizROSModule">
+
+     droneArchitectureRvizROSModule
+
+  </description>
+  <author>Jesus Pestana Puerta</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/droneArchitectureRvizROSModule</url>
+  <depend package="droneModuleROS"/>
+  <depend package="droneMsgsROS"/>
+  <depend package="std_msgs"/>
+  <depend package="rospy"/>
+  <depend package="roscpp"/>
+  <depend package="visualization_msgs"/>
+  <depend package="interactive_markers"/>
+
+</package>
+
+

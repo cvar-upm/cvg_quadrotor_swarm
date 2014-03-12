@@ -1,0 +1,22 @@
+<package>
+  <description brief="droneTrajectoryControllerROSModule">
+
+     droneTrajectoryControllerROSModule
+
+  </description>
+  <author>Jesus Pestana Puerta</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/droneTrajectoryControllerROSModule</url>
+  <depend package="roscpp"/>
+  <depend package="droneTrajectoryController"/>
+  <depend package="std_msgs"/>
+  <depend package="droneMsgsROS"/>
+  <depend package="droneModuleROS"/>
+  <depend package="opencv2"/>
+  <depend package="referenceFrames"/>
+  <depend package="lib_cvgloggerROS"/>
+
+</package>
+
+

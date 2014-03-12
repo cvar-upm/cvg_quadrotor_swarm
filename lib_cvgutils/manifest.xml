@@ -1,0 +1,23 @@
+<package>
+  <description brief="lib_cvgutils">
+
+     lib_cvgutils
+
+  </description>
+  <author>Jesus Pestana Puerta</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/lib_cvgutils</url>
+
+  <!-- dependencies -->
+  <depend package="opencv2"/>
+  <depend package="lib_pugixml"/>
+
+  <!-- export -->
+  <export>
+      <cpp cflags="-I${prefix}/src/include" lflags="-L${prefix}/lib -llib_cvgutils"/>
+  </export>
+
+</package>
+
+

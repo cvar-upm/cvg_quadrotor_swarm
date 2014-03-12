@@ -1,0 +1,222 @@
+#include "droneTrajectoryControllerROSModule.h"
+
+DroneTrajectoryControllerROSModule::DroneTrajectoryControllerROSModule() :
+    DroneModule(droneModule::active, 30.0) ,
+    drone_trajectory_controller(getId())
+    {
+    std::cout << "Constructor: DroneTrajectoryControllerROSModule" << std::endl;
+    droneModuleLoggerType = droneModule::non_logger;
+
+    XMLFileReader my_xml_reader(std::string(std::getenv("DRONE_STACK"))+"/configs/drone"+ std::to_string(idDrone)+"/trajectory_controller_config.xml");
+    set_moduleRate(my_xml_reader.readDoubleValue( {"trajectory_controller_config","module_frequency"} ));
+
+    stay_in_position = false;
+}
+
+DroneTrajectoryControllerROSModule::~DroneTrajectoryControllerROSModule() {}
+
+void DroneTrajectoryControllerROSModule::init()  { /* Everything is on the Constructor */ }
+void DroneTrajectoryControllerROSModule::close() { /* DroneModule::~DroneModule gets called automatically */ }
+
+bool DroneTrajectoryControllerROSModule::resetValues() {
+    stay_in_position = false;
+    drone_trajectory_controller.resetValues();
+    return true;
+}
+
+bool DroneTrajectoryControllerROSModule::startVal() {
+    if ( !isStarted() ) {
+        resetValues();
+        setNavCommandToZero();
+    }
+    return DroneModule::startVal();
+}
+
+bool DroneTrajectoryControllerROSModule::stopVal() {
+    setNavCommandToZero();
+    return DroneModule::stopVal();
+}
+
+bool DroneTrajectoryControllerROSModule::run() {
+    DroneModule::run();
+    controlModePublish();
+
+    if (!moduleStarted) {
+        return false;
+    }
+
+    double pitch, roll, dyaw, dz;
+    drone_trajectory_controller.getOutput( &pitch, &roll, &dyaw, &dz);
+    setNavCommand( pitch, roll, dyaw, dz);
+    return true;
+}
+
+void DroneTrajectoryControllerROSModule::open(ros::NodeHandle & nIn, std::string moduleName) {
+    //Node
+    DroneModule::open(nIn,moduleName);
+
+    //// Topics ///
+    // Subscribers
+    dronePositionRefSub     = n.subscribe(DRONE_CONTROLLER_CTRLR_POSITION_REF_SUBSCRIPTION, 1, &DroneTrajectoryControllerROSModule::dronePositionRefsSubCallback, this);
+    droneSpeedsRefSub       = n.subscribe(DRONE_CONTROLLER_CTRLR_SPEED_REF_SUBSCRIPTION,    1, &DroneTrajectoryControllerROSModule::droneSpeedsRefsSubCallback, this);
+    droneTrajectoryRefSub   = n.subscribe(DRONE_CONTROLLER_ABS_TRAJ_REF_COM_SUBSCRIPTION,   1, &DroneTrajectoryControllerROSModule::droneTrajectoryRefCommandCallback, this);
+    droneEstimatedPoseSubs   = n.subscribe(DRONE_STATE_ESTIMATOR_POSE_SUBSCRIPTION_LMrT,     1, &DroneTrajectoryControllerROSModule::droneEstimatedPoseCallback, this);
+    droneEstimatedSpeedsSubs = n.subscribe(DRONE_STATE_ESTIMATOR_SPEEDS_SUBSCRIPTION_LMrT,   1, &DroneTrajectoryControllerROSModule::droneEstimatedSpeedsCallback, this);
+
+    // Publishers
+    controlModePub      = n.advertise<std_msgs::Int16>(moduleName+"/controlMode", 1);
+<<<<<<< HEAD
+    droneCommandPitchRollPubl = n.advertise<droneMsgsROS::droneNavCommand>(DRONE_DRIVER_COMMAND_DRONE_COMMAND_PITCH_ROLL, 1);
+    droneCommandDYawPubl      = n.advertise<droneMsgsROS::droneNavCommand>(DRONE_DRIVER_COMMAND_DRONE_COMMAND_DYAW, 1);
+    droneCommandDAltitudePubl = n.advertise<droneMsgsROS::droneNavCommand>(DRONE_DRIVER_COMMAND_DRONE_COMMAND_DALTITUDE, 1);
+=======
+    drone_command_pitch_roll_publisher = n.advertise<droneMsgs::dronePitchRollCmd>(DRONE_DRIVER_COMMAND_DRONE_COMMAND_PITCH_ROLL, 1);
+    drone_command_dyaw_publisher       = n.advertise<droneMsgs::droneDYawCmd>(DRONE_DRIVER_COMMAND_DRONE_COMMAND_DYAW, 1);
+    drone_command_daltitude_publisher  = n.advertise<droneMsgs::droneDAltitudeCmd>(DRONE_DRIVER_COMMAND_DRONE_COMMAND_DALTITUDE, 1);
+>>>>>>> ac3e620d86c7166658c76b8a366cc9b53ef5a4a5
+
+    // Service servers
+    setControlModeServerSrv = n.advertiseService(moduleName+"/setControlMode",&DroneTrajectoryControllerROSModule::setControlModeServCall,this);
+
+    //Flag of module opened
+    droneModuleOpened=true;
+
+    //End
+    return;
+}
+
+void DroneTrajectoryControllerROSModule::dronePositionRefsSubCallback(const droneMsgsROS::dronePose::ConstPtr &msg) {
+    drone_trajectory_controller.setPositionRefs_drone_GMR_wrt_GFF( msg->x, msg->y, msg->z, atan2( sin(msg->yaw), cos(msg->yaw)), 0.0, 0.0);
+}
+
+void DroneTrajectoryControllerROSModule::droneSpeedsRefsSubCallback(const droneMsgsROS::droneSpeeds::ConstPtr &msg) {
+    drone_trajectory_controller.setSpeedRefs_drone_GMR_wrt_GFF( msg->dx, msg->dy, msg->dz);
+    drone_trajectory_controller.setDYawFIReference_drone_GMR_wrt_GFF( msg->dyaw);
+}
+
+void DroneTrajectoryControllerROSModule::droneTrajectoryRefCommandCallback(const droneMsgsROS::dronePositionTrajectoryRefCommand::ConstPtr& msg) {
+    TrajectoryConfiguration traj_config(idDrone);
+    DroneTrajectory trajectory(idDrone);
+
+    last_trajectory_command = (*msg);
+    int n = last_trajectory_command.droneTrajectory.size();
+
+    if(n==0 && (!stay_in_position) ) {
+        droneMsgsROS::dronePositionRefCommand actual_position;
+        actual_position.x = +last_estimatedPose.x;
+        actual_position.y = +last_estimatedPose.y;
+        actual_position.z = +last_estimatedPose.z;
+        last_trajectory_command.droneTrajectory.push_back(actual_position);
+        last_trajectory_command.is_periodic        = false;
+        last_trajectory_command.initial_checkpoint = 0;
+        n = 1;
+        stay_in_position = true;
+    } else {
+        if ( n>0 ) {
+            stay_in_position = false;
+        } else {
+            return;
+        }
+    }
+
+    for (int i=0; i<n; i++ ) {
+        double x_abs   = last_trajectory_command.droneTrajectory[i].x;
+        double y_abs   = last_trajectory_command.droneTrajectory[i].y;
+        double z_abs   = last_trajectory_command.droneTrajectory[i].z;
+//        double yaw_abs = last_trajectory_command.droneTrajectory[i].yaw;
+        double yaw_abs = 0.0;
+
+        double x2, y2, z2, yaw2, pitch2, roll2;
+        drone_trajectory_controller.referenceChange_from1_drone_GMR_wrt_GFF_to2_drone_LMrT_wrt_LMrTFF( x_abs, y_abs, z_abs, yaw_abs, 0.0, 0.0, x2, y2, z2, yaw2, pitch2, roll2);
+        trajectory.addWaypoint( x2, y2, z2);
+    }
+
+    trajectory.setPeriodic( last_trajectory_command.is_periodic);
+    trajectory.setInitialCheckpoint( last_trajectory_command.initial_checkpoint);
+    drone_trajectory_controller.setTrajectory_droneLMrT_wrt_LMrTFF( trajectory, traj_config);
+    drone_trajectory_controller.setControlMode(Controller_MidLevel_controlMode::TRAJECTORY_CONTROL);
+    return;
+}
+
+void DroneTrajectoryControllerROSModule::droneEstimatedPoseCallback(const droneMsgsROS::dronePose::ConstPtr &msg) {
+    last_estimatedPose = (*msg);
+    drone_trajectory_controller.setFeedback_drone_GMR_wrt_GFF( msg->x, msg->y, msg->z, msg->yaw, 0.0, 0.0);
+}
+
+void DroneTrajectoryControllerROSModule::droneEstimatedSpeedsCallback(const droneMsgsROS::droneSpeeds::ConstPtr &msg) {
+    // Currently the speeds are calculated derivating the position estimates. (DroneLocalizer does not output speeds)
+    // drone_trajectory_controller.setSpeedFeedback_drone_GMR_wrt_GFF( msg->dx, msg->dy, msg->dz, msg->dyaw); // function undeclared/undefined
+    last_estimatedSpeed = (*msg);
+    return;
+}
+
+void DroneTrajectoryControllerROSModule::controlModePublish() {
+    Controller_MidLevel_controlMode::controlMode current_control_mode;
+    current_control_mode = drone_trajectory_controller.getControlMode();
+
+    switch(current_control_mode) {
+    case Controller_MidLevel_controlMode::TRAJECTORY_CONTROL:
+        controlModeMsg.data=1;
+        break;
+    case Controller_MidLevel_controlMode::POSITION_CONTROL:
+        controlModeMsg.data=2;
+        break;
+    case Controller_MidLevel_controlMode::SPEED_CONTROL:
+    default:
+        controlModeMsg.data=3;
+        break;
+    }
+
+    if (droneModuleOpened)
+        controlModePub.publish(controlModeMsg);
+}
+
+int DroneTrajectoryControllerROSModule::publishDroneNavCommand() {
+    if(droneModuleOpened==false || droneModuleType==droneModule::monitor)
+        return 0;
+
+    drone_command_pitch_roll_publisher.publish(drone_command_pitch_roll_msg);
+    drone_command_dyaw_publisher.publish(drone_command_dyaw_msg);
+    drone_command_daltitude_publisher.publish(drone_command_daltitude_msg);
+    return 1;
+}
+
+void DroneTrajectoryControllerROSModule::setNavCommand(float pitch, float roll, float dyaw, float dz, double time) {
+    drone_command_pitch_roll_msg.header.stamp = ros::Time::now();
+    drone_command_dyaw_msg.header.stamp       = ros::Time::now();
+    drone_command_daltitude_msg.header.stamp  = ros::Time::now();
+
+    drone_command_pitch_roll_msg.pitchCmd    = pitch;
+    drone_command_pitch_roll_msg.rollCmd     = roll;
+    drone_command_dyaw_msg.dYawCmd           = dyaw;
+    drone_command_daltitude_msg.dAltitudeCmd = dz;
+
+    publishDroneNavCommand();
+    return;
+}
+
+void DroneTrajectoryControllerROSModule::setNavCommandToZero(void) {
+    setNavCommand(0.0,0.0,0.0,0.0,-1.0);
+    return;
+}
+
+bool DroneTrajectoryControllerROSModule::setControlModeServCall(droneTrajectoryControllerROSModule::setControlMode::Request& request, droneTrajectoryControllerROSModule::setControlMode::Response& response) {
+    switch(request.controlMode) {
+    case 0: //Default
+        response.ack = drone_trajectory_controller.setControlMode(drone_trajectory_controller.getInitControlMode());
+        break;
+    case 1: //Trajectory
+        response.ack = drone_trajectory_controller.setControlMode(Controller_MidLevel_controlMode::TRAJECTORY_CONTROL);
+        break;
+    case 2: //Position
+        response.ack = drone_trajectory_controller.setControlMode(Controller_MidLevel_controlMode::POSITION_CONTROL);
+        break;
+    case 3: //Speed
+        response.ack = drone_trajectory_controller.setControlMode(Controller_MidLevel_controlMode::SPEED_CONTROL);
+        break;
+    default:
+        response.ack = false;
+        return false;
+    }
+    return response.ack;
+}

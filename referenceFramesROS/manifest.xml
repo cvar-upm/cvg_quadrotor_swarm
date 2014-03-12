@@ -1,0 +1,30 @@
+<package>
+  <description brief="referenceFramesROS">
+
+     referenceFramesROS
+
+  </description>
+  <author>Jose Luis Sanchez Lopez</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/referenceFramesROS</url>
+  
+  <depend package="roscpp"/>
+  <depend package="std_msgs"/>
+  
+  <depend package="droneMsgsROS"/>
+  
+  <depend package="droneVisualMarkersLocalizer"/> <!--htrans.h -->
+  
+  <depend package="opencv2"/>
+  <depend package="lib_cvgutils"/>
+  
+  
+   <export>
+      <cpp cflags="-I${prefix}/src/include" lflags="-L${prefix}/lib -lreferenceFramesROS"/>
+    </export>
+
+
+</package>
+
+

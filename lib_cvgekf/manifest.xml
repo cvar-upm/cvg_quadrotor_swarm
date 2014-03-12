@@ -1,0 +1,23 @@
+<package>
+  <description brief="lib_cvgekf">
+
+     lib_cvgekf
+
+  </description>
+  <author>Jesus Pestana Puerta</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/lib_cvgekf</url>
+
+  <!-- dependencies -->
+  <!-- <depend package="opencv2"/> dependency inside lib_cvgutils-->
+  <depend package="lib_cvgutils"/>
+
+  <!-- export -->
+  <export>
+      <cpp cflags="-I${prefix}/src/include" lflags="-L${prefix}/lib -llib_cvgekf"/>
+  </export>
+
+</package>
+
+

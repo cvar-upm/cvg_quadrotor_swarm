@@ -1,0 +1,16 @@
+<arucoList>
+	<arucoMarker>
+		<id>0</id> 
+		<size>0.123</size>
+	</arucoMarker>
+	
+	<arucoMarker>
+		<id>2</id> 
+		<size>0.08</size>
+	</arucoMarker>
+	
+	<arucoMarker>
+		<id>3</id> 
+		<size>0.15</size>
+	</arucoMarker>
+</arucoList>

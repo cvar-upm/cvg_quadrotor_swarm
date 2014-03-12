@@ -1,0 +1,45 @@
+<package>
+  <description brief="droneSimulatorROSModule">
+
+     droneSimulatorROSModule
+  
+  </description>
+  <author>Jose Luis Sanchez Lopez</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/droneSimulatorROSModule</url>
+  
+
+  
+  <depend package="droneModuleROS"/>
+  
+  <depend package="roscpp"/>
+  
+  
+  <depend package="sensor_msgs"/>
+<!--
+  <depend package="opencv2"/>
+  <depend package="cv_bridge"/>
+  -->
+  
+  <depend package="std_msgs"/>
+  <depend package="image_transport"/>
+  
+  <depend package="droneMsgsROS"/>
+  
+  <depend package="geometry_msgs"/>
+
+
+    <depend package="droneSimulator"/>
+    <depend package="lib_cvgutils"/>
+  
+  <!--
+   <export>
+      <cpp cflags="-I${prefix}/src/include" lflags="-L${prefix}/lib -ldriverParrotARDrone"/>
+    </export>
+  -->
+  
+
+</package>
+
+

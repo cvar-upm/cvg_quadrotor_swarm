@@ -1,0 +1,29 @@
+<package>
+  <description brief="droneYawCommander">
+
+     droneYawCommander
+
+  </description>
+  <author>Jose Luis Sanchez Lopez</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/droneYawCommander</url>
+  
+  <!-- 
+  <depend package="roscpp"/>
+  <depend package="std_msgs"/>
+  
+  <depend package="droneMsgs"/>
+  
+  <depend package="droneModule"/> -->
+  
+  <!-- <depend package="pugixml"/> -->
+  
+  <export>
+  	<cpp cflags="-I${prefix}/src/include" lflags="-L${prefix}/lib -ldroneYawCommander"/>
+  </export>
+
+
+</package>
+
+

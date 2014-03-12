@@ -1,0 +1,25 @@
+<package>
+  <description brief="lib_aruco">
+
+     lib_aruco
+
+  </description>
+  <author>Jose Luis Sanchez</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/lib_aruco</url>
+  
+  <!-- arucoLib -->
+  <depend package="opencv2"/>
+
+  
+  
+  <!-- export -->
+  <export>
+      <cpp cflags="-I${prefix}/src/include" lflags="-L${prefix}/lib -llib_aruco"/>
+  </export>
+  
+  
+</package>
+
+

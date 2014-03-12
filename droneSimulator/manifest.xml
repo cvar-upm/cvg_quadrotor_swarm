@@ -1,0 +1,23 @@
+<package>
+  <description brief="droneSimulator">
+
+     droneSimulator
+
+  </description>
+  <author>Jesus Pestana Puerta</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/droneSimulator</url>
+
+  <!-- dependencies -->
+  <depend package="lib_cvgutils"/>
+  <depend package="lib_cvgekf"/>
+
+  <!-- export -->
+  <export>
+        <cpp cflags="-I${prefix}/src/include" lflags="-L${prefix}/lib -ldroneSimulator"/>
+  </export>
+
+</package>
+
+

@@ -1,0 +1,26 @@
+<package>
+  <description brief="lib_cvgloggerROS">
+
+     lib_cvgloggerROS
+
+  </description>
+  <author>Jesus Pestana Puerta</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/lib_cvgloggerROS</url>
+
+  <depend package="roscpp"/>
+    <depend package="droneModuleROS"/>
+  <depend package="std_msgs"/>
+  <depend package="lib_cvglogger"/>
+  <depend package="lib_cvgutils"/>
+  <depend package="droneMsgsROS"/>
+
+  <!-- export -->
+  <export>
+      <cpp cflags="-I${prefix}/src/include" lflags="-L${prefix}/lib -llib_cvgloggerROS"/>
+  </export>
+
+</package>
+
+

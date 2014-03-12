@@ -1,0 +1,23 @@
+<package>
+  <description brief="droneEKFStateEstimator">
+
+     droneEKFStateEstimator
+
+  </description>
+  <author>Jesus Pestana Puerta</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/droneEKFStateEstimator</url>
+
+  <!-- dependencies -->
+  <depend package="lib_cvgekf"/>
+  <depend package="referenceFrames"/>
+
+  <!-- export -->
+  <export>
+        <cpp cflags="-I${prefix}/src/include -I${prefix}/src/include/models" lflags="-L${prefix}/lib -ldroneEKFStateEstimator"/>
+  </export>
+
+</package>
+
+

@@ -1,0 +1,20 @@
+<package>
+  <description brief="droneTrajectoryStateMachine">
+
+     droneTrajectoryStateMachine
+
+  </description>
+  <author>Jesus Pestana Puerta</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/droneTrajectoryStateMachine</url>
+  <depend package="lib_cvgutils"/>
+
+  <!-- export -->
+  <export>
+        <cpp cflags="-I${prefix}/src/include -I${prefix}/src/config" lflags="-L${prefix}/lib -ldroneTrajectoryStateMachine"/>
+  </export>
+
+</package>
+
+

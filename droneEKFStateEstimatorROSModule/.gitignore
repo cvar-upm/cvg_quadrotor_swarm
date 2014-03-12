@@ -1,0 +1,31 @@
+# Temporary files
+*~
+
+#ROS messages gen
+msg_gen
+
+#ROS servicios generados
+srv_gen
+
+#Ros carpeta build
+build
+
+#ROS carpeta src
+#*.py
+#*_.py
+src/include/ekf_lmrt_pose_publisher.h
+src/source/ekf_lmrt_pose_publisher.cpp
+src/source/parrotStateEstimator_Node.cpp
+src/source/parrotStateEstimator_Node_WLog.cpp
+
+# srv auto-generated files
+src/droneEKFStateEstimatorROSModule
+
+#user qt creator
+CMakeLists.txt.user
+
+#ROS carpeta lib
+lib
+
+#ROS carpeta bin
+bin

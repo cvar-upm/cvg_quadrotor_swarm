@@ -1,0 +1,23 @@
+<package>
+  <description brief="droneTrajectoryController">
+
+     droneTrajectoryController
+
+  </description>
+  <author>Jesus Pestana Puerta</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/droneTrajectoryController</url>
+  <depend package="droneSpeedPositionMidLevelController"/>
+  <depend package="droneTrajectoryStateMachine"/>
+  <depend package="referenceFrames"/>
+  <depend package="lib_cvglogger"/>
+
+  <!-- export -->
+  <export>
+        <cpp cflags="-I${prefix}/src/include" lflags="-L${prefix}/lib -ldroneTrajectoryController"/>
+  </export>
+
+</package>
+
+

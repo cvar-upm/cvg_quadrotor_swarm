@@ -1,0 +1,24 @@
+<package>
+  <description brief="droneVisualMarkersLocalizer">
+
+     droneVisualMarkersLocalizer
+
+  </description>
+  <author>Paloma de la Puente and Jose Luis Sánchez López</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/droneVisualMarkersLocalizer</url>
+  
+  <depend package="lib_pugixml"/>
+  <depend package="lib_newmat11"/>
+  
+  
+  <export>
+  	<cpp cflags="-I${prefix}/src/include" lflags="-L${prefix}/lib -ldroneVisualMarkersLocalizer"/>
+  </export>
+  
+
+
+</package>
+
+

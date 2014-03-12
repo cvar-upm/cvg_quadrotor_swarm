@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<opencv_storage>
+	<numCodesDefined>3</numCodesDefined>
+	<arucoMarker1>
+		<id>0</id> 
+		<size>0.123</size>
+		<type>0</type>
+		<TraVec type_id="opencv-matrix">
+			<rows> 3 </rows>
+	   		<cols> 1 </cols>
+	   		<dt> d </dt>
+	   		<data> 0.0 0.0 0.0 </data>
+		</TraVec>
+		<RotVec type_id="opencv-matrix">
+			<rows> 3 </rows>
+	   		<cols> 1 </cols>
+	   		<dt> d </dt>
+	   		<data> 1.0 0.0 0.0 </data>
+		</RotVec>
+	</arucoMarker1>
+	
+	<arucoMarker2>
+		<id>2</id> 
+		<size>0.08</size>
+		<type>0</type>
+		<TraVec type_id="opencv-matrix">
+			<rows> 3 </rows>
+	   		<cols> 1 </cols>
+	   		<dt> d </dt>
+	   		<data> 0.0 0.0 0.0 </data>
+		</TraVec>
+		<RotVec type_id="opencv-matrix">
+			<rows> 3 </rows>
+	   		<cols> 1 </cols>
+	   		<dt> d </dt>
+	   		<data> 1.0 0.0 0.0 </data>
+		</RotVec>
+	</arucoMarker2>
+	
+	<arucoMarker3>
+		<id>3</id> 
+		<size>0.15</size>
+		<type>10</type>
+	</arucoMarker3>
+
+
+</opencv_storage>

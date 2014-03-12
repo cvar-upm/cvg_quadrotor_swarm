@@ -1,0 +1,32 @@
+<package>
+  <description brief="arucoEye">
+
+     arucoEye
+
+  </description>
+  <author>Jose Luis Sanchez</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/arucoEye</url>
+  
+  <!-- arucoEye -->
+  <depend package="opencv2"/>
+  <depend package="lib_pugixml"/>
+  <depend package="lib_aruco"/>
+  <depend package="lib_cvgutils"/>
+  
+  
+  
+  <!-- arucoEyeTest -->
+
+  
+  
+  <!-- export -->
+  <export>
+      <cpp cflags="-I${prefix}/src/include" lflags="-L${prefix}/lib -larucoEye"/>
+    </export>
+  
+  
+</package>
+
+

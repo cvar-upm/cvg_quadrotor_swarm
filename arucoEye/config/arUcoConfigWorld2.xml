@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<opencv_storage>
+	<numCodesDefined>9</numCodesDefined>
+	<arucoMarker0>
+		<id>0</id> 
+		<size>0.19558</size>
+		<type>0</type>
+		<TraVec type_id="opencv-matrix">
+			<rows> 3 </rows>
+	   		<cols> 1 </cols>
+	   		<dt> d </dt>
+	   		<data> +0.2794 -0.2175 0.0 </data>
+		</TraVec>
+		<RotVec type_id="opencv-matrix">
+			<rows> 3 </rows>
+	   		<cols> 1 </cols>
+	   		<dt> d </dt>
+	   		<data> 1.0 0.0 0.0 </data>
+		</RotVec>
+	</arucoMarker0>	
+	<arucoMarker1>
+		<id>1</id> 
+		<size>0.19558</size>
+		<type>0</type>
+		<TraVec type_id="opencv-matrix">
+			<rows> 3 </rows>
+	   		<cols> 1 </cols>
+	   		<dt> d </dt>
+	   		<data> +0.2794 +0.2175 0.0 </data>
+		</TraVec>
+		<RotVec type_id="opencv-matrix">
+			<rows> 3 </rows>
+	   		<cols> 1 </cols>
+	   		<dt> d </dt>
+	   		<data> 1.0 0.0 0.0 </data>
+		</RotVec>
+	</arucoMarker1>
+	<arucoMarker2>
+		<id>2</id> 
+		<size>0.19558</size>
+		<type>0</type>
+		<TraVec type_id="opencv-matrix">
+			<rows> 3 </rows>
+	   		<cols> 1 </cols>
+	   		<dt> d </dt>
+	   		<data> -0.2794 -0.2175 0.0 </data>
+		</TraVec>
+		<RotVec type_id="opencv-matrix">
+			<rows> 3 </rows>
+	   		<cols> 1 </cols>
+	   		<dt> d </dt>
+	   		<data> 1.0 0.0 0.0 </data>
+		</RotVec>
+	</arucoMarker2>
+	<arucoMarker3>
+		<id>3</id> 
+		<size>0.19558</size>
+		<type>0</type>
+		<TraVec type_id="opencv-matrix">
+			<rows> 3 </rows>
+	   		<cols> 1 </cols>
+	   		<dt> d </dt>
+	   		<data> -0.2794 +0.2175 0.0 </data>
+		</TraVec>
+		<RotVec type_id="opencv-matrix">
+			<rows> 3 </rows>
+	   		<cols> 1 </cols>
+	   		<dt> d </dt>
+	   		<data> 1.0 0.0 0.0 </data>
+		</RotVec>
+	</arucoMarker3>
+	<arucoMarker4>
+		<id>4</id> 
+		<size>0.0889</size>
+		<type>0</type>
+		<TraVec type_id="opencv-matrix">
+			<rows> 3 </rows>
+	   		<cols> 1 </cols>
+	   		<dt> d </dt>
+	   		<data> +0.2794 0.0 0.0 </data>
+		</TraVec>
+		<RotVec type_id="opencv-matrix">
+			<rows> 3 </rows>
+	   		<cols> 1 </cols>
+	   		<dt> d </dt>
+	   		<data> 1.0 0.0 0.0 </data>
+		</RotVec>
+	</arucoMarker4>
+	<arucoMarker5>
+		<id>5</id> 
+		<size>0.0889</size>
+		<type>0</type>
+		<TraVec type_id="opencv-matrix">
+			<rows> 3 </rows>
+	   		<cols> 1 </cols>
+	   		<dt> d </dt>
+	   		<data> 0.0 -0.2175 0.0 </data>
+		</TraVec>
+		<RotVec type_id="opencv-matrix">
+			<rows> 3 </rows>
+	   		<cols> 1 </cols>
+	   		<dt> d </dt>
+	   		<data> 1.0 0.0 0.0 </data>
+		</RotVec>
+	</arucoMarker5>
+	<arucoMarker6>
+		<id>6</id> 
+		<size>0.0889</size>
+		<type>0</type>
+		<TraVec type_id="opencv-matrix">
+			<rows> 3 </rows>
+	   		<cols> 1 </cols>
+	   		<dt> d </dt>
+	   		<data> 0.0 0.0 0.0 </data>
+		</TraVec>
+		<RotVec type_id="opencv-matrix">
+			<rows> 3 </rows>
+	   		<cols> 1 </cols>
+	   		<dt> d </dt>
+	   		<data> 1.0 0.0 0.0 </data>
+		</RotVec>
+	</arucoMarker6>
+	<arucoMarker7>
+		<id>7</id> 
+		<size>0.0889</size>
+		<type>0</type>
+		<TraVec type_id="opencv-matrix">
+			<rows> 3 </rows>
+	   		<cols> 1 </cols>
+	   		<dt> d </dt>
+                        <data> 0.00 +0.2175 0.0 </data>
+		</TraVec>
+		<RotVec type_id="opencv-matrix">
+			<rows> 3 </rows>
+	   		<cols> 1 </cols>
+	   		<dt> d </dt>
+	   		<data> 1.0 0.0 0.0 </data>
+		</RotVec>
+	</arucoMarker7>
+	<arucoMarker8>
+		<id>8</id> 
+		<size>0.0889</size>
+		<type>0</type>
+		<TraVec type_id="opencv-matrix">
+			<rows> 3 </rows>
+	   		<cols> 1 </cols>
+	   		<dt> d </dt>
+                        <data> -0.2794 0.0 0.0 </data>
+		</TraVec>
+		<RotVec type_id="opencv-matrix">
+			<rows> 3 </rows>
+	   		<cols> 1 </cols>
+	   		<dt> d </dt>
+	   		<data> 1.0 0.0 0.0 </data>
+		</RotVec>
+	</arucoMarker8>
+</opencv_storage>

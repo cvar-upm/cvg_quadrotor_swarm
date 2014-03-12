@@ -1,0 +1,34 @@
+<package>
+  <description brief="droneArucoEye">
+
+     droneArucoEye
+
+  </description>
+  <author>Jose Luis Sanchez</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/droneArucoEye</url>
+  
+  <!-- droneArucoEye -->
+  <depend package="opencv2"/>
+  <depend package="lib_pugixml"/>
+  <depend package="lib_aruco"/>
+  
+  <depend package="referenceFrames"/>
+  
+  <depend package="arucoEye"/>
+
+<!--
+  <depend package="lib_cvgutils"/>
+  -->
+  
+  
+  <!-- export -->
+  <export>
+      <cpp cflags="-I${prefix}/src/include" lflags="-L${prefix}/lib -ldroneArucoEye"/>
+    </export>
+  
+  
+</package>
+
+

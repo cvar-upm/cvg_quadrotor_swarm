@@ -1,0 +1,34 @@
+<package>
+  <description brief="droneMissionPlannerROSModule">
+
+     droneMissionPlannerROSModule
+
+  </description>
+  <author>Jose Luis Sánchez López</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/droneMissionPlannerROSModule</url>
+  
+  <depend package="roscpp"/>
+  <depend package="std_msgs"/>
+  
+  <depend package="droneMsgsROS"/>
+  <depend package="droneModuleROS"/>
+
+  <depend package="droneMissionPlanner"/>
+
+  
+  
+  
+  
+  
+  <!--
+  <export>
+  	<cpp cflags="-I${prefix}/src/include" lflags="-L${prefix}/lib -ldroneTrajectoryPlanner"/>
+  </export>
+  -->
+
+
+</package>
+
+

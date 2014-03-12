@@ -1,0 +1,19 @@
+<package>
+  <description brief="lib_cvglogger">
+
+     lib_cvglogger
+
+  </description>
+  <author>Jesus Pestana Puerta</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/lib_cvglogger</url>
+
+  <!-- export -->
+  <export>
+      <cpp cflags="-I${prefix}/src/include" lflags="-L${prefix}/lib -llib_cvglogger"/>
+  </export>
+
+</package>
+
+

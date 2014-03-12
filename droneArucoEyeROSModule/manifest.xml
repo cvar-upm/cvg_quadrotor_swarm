@@ -1,0 +1,40 @@
+<package>
+  <description brief="droneArucoEyeROSModule">
+
+     droneArucoEyeROSModule
+
+  </description>
+  <author>Jose Luis Sanchez-Lopez</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/droneArucoEyeROSModule</url>
+  
+  
+  <depend package="roscpp"/>
+  <depend package="std_msgs"/>
+
+  
+  <!--
+  <depend package="std_msgs"/>
+
+  <depend package="parrotDriver"/>
+  <depend package="arucoLib"/>	
+  
+  -->
+  
+    <depend package="opencv2"/>
+  <depend package="image_transport"/> 
+  <depend package="cv_bridge"/>
+  
+    <depend package="droneModuleROS"/>
+  <depend package="droneMsgsROS"/>
+
+  <depend package="referenceFrames"/>
+  
+  <depend package="droneArucoEye"/>
+  
+  
+
+</package>
+
+
