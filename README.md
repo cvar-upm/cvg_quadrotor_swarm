@@ -14,6 +14,9 @@ The connectivity between modules of the stack is specified in:
 ${DRONE_STACK}/documentation/system_module_architecture.png . Where ${DRONE_STACK} refers to the folder where this software stack was downloaded. The functionality of the modules is explained in the following paper:
 
 - J. L. Sanchez-Lopez, J. Pestana, P. de la Puente, P. Campoy. “Visual Quadrotor Swarm for IMAV 2013 Indoor Competition”. In 2013 International Micro Aerial Vehicle Conference and Flight Competition (IMAV 2013). Toulouse (France). September, 17-20, 2013. [Link](http://uvs-info.com/phocadownload/02_2clh_Technical-Session-4_Vision/Visual_Quadrotor_Swarm_for_IMAV_2013_Indoor_Competition.pdf "IMAV_2013 CVG group paper").
+- [http://www.vision4uav.eu/?q=quadrotor_stack](http://www.vision4uav.eu/?q=quadrotor_stack "http://www.vision4uav.eu")
+- [http://www.vision4uav.eu/?q=swarm](http://www.vision4uav.eu/?q=swarm "http://www.vision4uav.eu")
+- [http://www.vision4uav.eu/?q=imav13](http://www.vision4uav.eu/?q=imav13 "http://www.vision4uav.eu")
 
 ## Table of Contents
 
