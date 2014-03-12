@@ -52,7 +52,7 @@ The installation follows the same steps needed usually to compile a self-contain
 * Create a ROS_WORKSPACE to install the stack and the required external ROS packages and stacks. For example, A ROS_WORKSPACE can be configured in the folder. `~/workspace/ros/quadrotor`. The following steps are advised:
 
         ```bash
-	$ # create the ~/workspace/ros/quadrotor folder
+        $ # create the ~/workspace/ros/quadrotor folder
         $ cd ~
         $ mkdir workspace
         $ cd workspace
@@ -60,57 +60,57 @@ The installation follows the same steps needed usually to compile a self-contain
         $ cd ros
         $ mkdir quadrotor
         $ cd quadrotor
-	$ # initialize ROS workspace using ROS groovy
-	$ rosws init ./ /opt/ros/groovy
-	```
+        $ # initialize ROS workspace using ROS groovy
+        $ rosws init ./ /opt/ros/groovy
+        ```
 
 * Download the required ROS packages using git or rosws:
 
-	```bash
-	$ # create folder where external ROS stacks are downloaded
-	$ rosws set ./extStack
-	$ # set folder to download the ardrone_autonomy ROS package
-	$ rosws set ./extStack/ardrone_autonomy --git https://github.com/AutonomyLab/ardrone_autonomy.git
-	$ # set folder to download the cvg_quadrotor_swarm ROS package
-	$ rosws set ./stack --git https://bitbucket.org/joselusl/quadrotor_swarm.git
-	$ # download both packages using git, through the rosws command
-	$ rosws update
+        ```bash
+        $ # create folder where external ROS stacks are downloaded
+        $ rosws set ./extStack
+        $ # set folder to download the ardrone_autonomy ROS package
+        $ rosws set ./extStack/ardrone_autonomy --git https://github.com/AutonomyLab/ardrone_autonomy.git
+        $ # set folder to download the cvg_quadrotor_swarm ROS package
+        $ rosws set ./stack --git https://bitbucket.org/joselusl/quadrotor_swarm.git
+        $ # download both packages using git, through the rosws command
+        $ rosws update
         ```
 
 * Set up the `DRONE_STACK` and `DRONE_WORKSPACE` environment variables. 
 
-	```bash
-	$ ./stack/documentation/installation/installers/installWS.sh
-	$ cd stack
-	$ ./documentation/installation/installers/installStack.sh
+        ```bash
+        $ ./stack/documentation/installation/installers/installWS.sh
+        $ cd stack
+        $ ./documentation/installation/installers/installStack.sh
         ```
 
 * Each time the cvg_quadrotor_swarm is going to be used, do the following (note that the ROS_WORKSPACE and other ROS environment variables should not be loaded in the .bashrc file or other ubuntu terminal startup files):
 
-	```bash
-	$ cd ${DRONE_STACK}
-	$ source setup.sh
+        ```bash
+        $ cd ${DRONE_STACK}
+        $ source setup.sh
         ```
 
 * Final steps installation instructions:
 
-	```bash
-	$ cd ${DRONE_STACK}
-	$ source setup.sh
-	$ rospack profile
-	$ rosdep update
-	$ # Compile external ROS packages: ardrone_autonomy
-	$ cd ../extStack/ardrone_autonomy/
-	$ roscd ardrone_autonomy
- 	$ /build_sdk.sh
+        ```bash
+        $ cd ${DRONE_STACK}
+        $ source setup.sh
+        $ rospack profile
+        $ rosdep update
+        $ # Compile external ROS packages: ardrone_autonomy
+        $ cd ../extStack/ardrone_autonomy/
+        $ roscd ardrone_autonomy
+        $ /build_sdk.sh
         ```
 
 * Compile the stack:
 
-	```bash
- 	$ cd ${DRONE_STACK}/launchers/
- 	$ ./rosmake_01.sh
-	$ ./rosmake_sim_01.sh
+        ```bash
+        $ cd ${DRONE_STACK}/launchers/
+        $ ./rosmake_01.sh
+        $ ./rosmake_sim_01.sh
         ```
 
 ## Network setup
@@ -208,10 +208,10 @@ NOTE: all the launchfiles open a separate terminal with multiple tabs, where eac
 
 The launch scripts have to be called using the following sintax in the shell terminal: 
 
-```bash
-$ cd ${DRONE_STACK}/launchers
-$ launcher\_script.sh NUMID\_DRONE NETWORK\_ROSCORE DRONE\_IP DRONE\_WIFI\_CHANNEL
-```
+        ```bash
+        $ cd ${DRONE_STACK}/launchers
+        $ launcher\_script.sh NUMID\_DRONE NETWORK\_ROSCORE DRONE\_IP DRONE\_WIFI\_CHANNEL
+        ```
 
 ### Arhicture, Map and Mission configuration
 
