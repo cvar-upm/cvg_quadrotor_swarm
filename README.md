@@ -11,7 +11,7 @@ We present a cost-effective framework for the prototyping of vision-based quadro
 The current distribution supports only the usage of the AR Drone 1.0 & 2.0. The architecture has been modified to be able to handle other platforms such as the: UASTech LinkQuad, Mikrokopter Oktokopter and the Asctec Pelican. Suitable driver modules for these quadrotors are currently in development.
 
 The connectivity between modules of the stack is specified in:
-${DRONE_STACK}/documentation/system_module_architecture.png . Where ${DRONE_STACK} refers to the folder where this software stack was downloaded. The functionality of the modules is explained in the following paper:
+`${DRONE_STACK}/documentation/system_module_architecture.png` . Where ${DRONE_STACK} refers to the folder where this software stack was downloaded. The functionality of the modules is explained in the following paper:
 
 - J. L. Sanchez-Lopez, J. Pestana, P. de la Puente, P. Campoy. “Visual Quadrotor Swarm for IMAV 2013 Indoor Competition”. In 2013 International Micro Aerial Vehicle Conference and Flight Competition (IMAV 2013). Toulouse (France). September, 17-20, 2013. [Link](http://uvs-info.com/phocadownload/02_2clh_Technical-Session-4_Vision/Visual_Quadrotor_Swarm_for_IMAV_2013_Indoor_Competition.pdf "IMAV_2013 CVG group paper").
 - [http://www.vision4uav.eu/?q=quadrotor_stack](http://www.vision4uav.eu/?q=quadrotor_stack "http://www.vision4uav.eu")
@@ -118,7 +118,7 @@ The installation follows the same steps needed usually to compile a self-contain
 
 ## Network setup
 
-First: checkout the related ROS tutorial http://wiki.ros.org/ROS/NetworkSetup .
+First: checkout the related ROS tutorial `http://wiki.ros.org/ROS/NetworkSetup` .
 
 Then, follow these steps:
 
@@ -133,11 +133,11 @@ Then, follow these steps:
 
 ## Coordinate Frames
 
-There are several coordinate frames, which location is briefly documented in ${DRONE_STACK}/documentation/Coordinate_Frames/Coordinate_Frames_documentation.tex/pdf. Please, refer to this documentation to understand the coordinate frames involved in running the software stack.
+There are several coordinate frames, which location is briefly documented in `${DRONE_STACK}/documentation/Coordinate_Frames/Coordinate_Frames_documentation.tex/pdf`. Please, refer to this documentation to understand the coordinate frames involved in running the software stack.
 
 ### Multirotor coordinate frame
 
-In the documentation located in ${DRONE_STACK}/documentation/Coordinate_Frames/Coordinate_Frames_documentation.tex/pdf, this reference frame is called F_{drone_LMrT}.
+In the documentation located in `${DRONE_STACK}/documentation/Coordinate_Frames/Coordinate_Frames_documentation.tex/pdf`, this reference frame is called F_{drone_LMrT}.
 
 The reference frame that is used to reference the multirotor's telemetry, broadcasted by the multirotor's ROS driver, is:
 
@@ -172,32 +172,34 @@ The sign convention for the commands, received by the multirotor's ROS driver, i
 
 In order to compile the stack, the following scripts are provided (please take a look at them to understand how to modify them for your own purposes):
 
-- ${DRONE_STACK}/launchers/rosmake_sim_01.sh : for simulated flights.
+- `${DRONE_STACK}/launchers/rosmake_sim_01.sh` : for simulated flights.
 
-- ${DRONE_STACK}/launchers/rosmake_01.sh : for experimental flights.
+- `${DRONE_STACK}/launchers/rosmake_01.sh` : for experimental flights.
 
 
 In order to run the stack, it was decided to run each node in a separate tab of a terminal window. The initialization of the architecture is done by executing shell scripts that open a new terminal with each node running in its tab. The scripts that are available are the following (please take a look at them to understand how do they work):
 
-- ${DRONE_STACK}/launchers/quadrotor_Test02.sh : runs all the nodes required for an experimental flight.
+- `${DRONE_STACK}/launchers/quadrotor_Test02.sh` : runs all the nodes required for an experimental flight.
 
-- ${DRONE_STACK}/launchers/quadrotor_Test02_no_logging.sh : same as previous, but without logging.
+- `${DRONE_STACK}/launchers/quadrotor_Test02_no_logging.sh` : same as previous, but without logging.
 
-- ${DRONE_STACK}/launchers/quadrotor_Testsim02.sh : runs all the nodes required for simulation.
+- `${DRONE_STACK}/launchers/quadrotor_Testsim02.sh` : runs all the nodes required for simulation.
 
-- ${DRONE_STACK}/launchers/quadrotor_Testsim03.sh : same as previous, but runs the ArucoEye simulator module.
+- `${DRONE_STACK}/launchers/quadrotor_Testsim03.sh` : same as previous, but runs the ArucoEye simulator module.
 
-- ${DRONE_STACK}/launchers/quadrotor_Testsim03_logging.sh : same as previous, but with logging.
+- `${DRONE_STACK}/launchers/quadrotor_Testsim03_logging.sh` : same as previous, but with logging.
 
-- ${DRONE_STACK}/launchers/rvizInterface_Test.sh : runs rviz with an specific configuration and an interfacing mode that converts some architecture messages to rviz markers.
+- `${DRONE_STACK}/launchers/rvizInterface_Test.sh` : runs rviz with an specific configuration and an interfacing mode that converts some architecture messages to rviz markers.
 
 The launch scripts have to be called using the following sintax in the shell terminal: 
 
 ```bash
 $ cd ${DRONE_STACK}/launchers
-$ launcher\_script.sh NUMID\_DRONE NETWORK\_ROSCORE DRONE\_IP DRONE\_WIFI\_CHANNEL
+$ launcher_script.sh NUMID_DRONE NETWORK_ROSCORE DRONE_IP DRONE_WIFI_CHANNEL
+$ # example
+$ launcher_script.sh 2 ROS_10 '' 11
 ```
-- The configuration files (mission, known ArUco markers locations, controller configuration, etc) are located in ${DRONE_STACK}/configs/drone${NUMID\_DRONE}/ . Many of the stack nodes access these files in order to read their configuration parameters.
+- The configuration files (mission, known ArUco markers locations, controller configuration, etc) are located in `${DRONE_STACK}/configs/drone${NUMID\_DRONE}/` . Many of the stack nodes access these files in order to read their configuration parameters.
 
 
 
@@ -216,12 +218,12 @@ The launch scripts have to be called using the following sintax in the shell ter
         $ launcher\_script.sh NUMID\_DRONE NETWORK\_ROSCORE DRONE\_IP DRONE\_WIFI\_CHANNEL
         ```
 
-### Arhicture, Map and Mission configuration
+### Architecture, Map and Mission configuration
 
-Check the ${DRONE_STACK}/documentation/matlab_dependencies.txt file to understand how to configure a mission. More specifically, after adding the related Matlab libraries to your Matlab path, check the following files:
-	${DRONE_STACK}/configs/Mission_10b/script_Mission10b_Generator.m
-	${DRONE_STACK}/configs/Mission_11c/script_Mission11c_Generator.m
-	${DRONE_STACK}/configs/Mission_IMAV13/script_IMAV13_Generator.m .
+Check the `${DRONE_STACK}/documentation/matlab_dependencies.txt` file to understand how to configure a mission. More specifically, after adding the related Matlab libraries to your Matlab path, check the following files:
+	`${DRONE_STACK}/configs/Mission_10b/script_Mission10b_Generator.m`, 
+	`${DRONE_STACK}/configs/Mission_11c/script_Mission11c_Generator.m`, 
+	`${DRONE_STACK}/configs/Mission_IMAV13/script_IMAV13_Generator.m` .
 Once you run these scripts, copy the created drone${NUMID\_DRONE} configuration folders to the ${DRONE_STACK}/configs folder.
 
 ### Complete mission execution
@@ -230,7 +232,7 @@ In order to start the modules automatically the flight is started using the brai
 
 ### Navigation with console UI
 
-The keybindings of the interface are specified in the file: ${DRONE_STACK}/droneInterfaceROSModule/other/keybindings_interfacejp_tentative.txt; and are programmed in the following source file: ${DRONE_STACK}/droneInterfaceROSModule/src/sources/droneInterface_jp_ROSModuleNode.cpp . 
+The keybindings of the interface are specified in the file: `${DRONE_STACK}/droneInterfaceROSModule/other/keybindings_interfacejp_tentative.txt`; and are programmed in the following source file: `${DRONE_STACK}/droneInterfaceROSModule/src/sources/droneInterface_jp_ROSModuleNode.cpp` . 
 
 In order to start the modules automatically the flight is started using the brain node, which starts the mission by clicking 's'. Once the mission is started, the user can enter the hovering mode of the AR Drone by clicking 'h' on the UI console. Then by killing the mission planner and the trajectory planner, he can access full control of the drone through the UI console (and send commands to the trajectory controller and so on).
 
@@ -238,15 +240,15 @@ As an alternative, the user can start the modules by hand (or editing a convenie
 
 ## Other README files
 
-- ${DRONE_STACK}/documentation/how_to_setup_and_use_chrony.txt
+- `${DRONE_STACK}/documentation/how_to_setup_and_use_chrony.txt`
 
-- ${DRONE_STACK}/documentation/how_to_use_dronelogger.txt
+- `${DRONE_STACK}/documentation/how_to_use_dronelogger.txt`
 
-- ${DRONE_STACK}/documentation/matlab_dependencies.txt
+- `${DRONE_STACK}/documentation/matlab_dependencies.txt`
 
-- ${DRONE_STACK}/documentation/qtcreator_instructions.txt
+- `${DRONE_STACK}/documentation/qtcreator_instructions.txt`
 
-- ${DRONE_STACK}/droneInterfaceROSModule/other/keybindings_interfacejp_tentative.txt : keybindings of the console UI, which are programmed in the following source file: ${DRONE_STACK}/droneInterfaceROSModule/src/sources/droneInterface_jp_ROSModuleNode.cpp .
+- `${DRONE_STACK}/droneInterfaceROSModule/other/keybindings_interfacejp_tentative.txt` : keybindings of the console UI, which are programmed in the following source file: `${DRONE_STACK}/droneInterfaceROSModule/src/sources/droneInterface_jp_ROSModuleNode.cpp` .
 
 
 ## License
