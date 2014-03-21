@@ -661,11 +661,13 @@ void RotationAnglesROSModule::rotationAnglesCallback(const ardrone_autonomy::Nav
     if(!run())
         return;
 
+    // Note, units of: msg->rotX, msg->rotY, msg->rotZ are deg.
+
     RotationAnglesMsgs.header=msg->header;
-    // rad,   mavwork reference frame
-    RotationAnglesMsgs.vector.x=msg->rotX;//*M_PI/180.0;
-    RotationAnglesMsgs.vector.y=-msg->rotY;//*M_PI/180.0;
-    RotationAnglesMsgs.vector.z=-msg->rotZ;//*M_PI/180.0;
+    // deg,   mavwork reference frame
+    RotationAnglesMsgs.vector.x =  msg->rotX;
+    RotationAnglesMsgs.vector.y = -msg->rotY;
+    RotationAnglesMsgs.vector.z = -msg->rotZ;
 
     publishRotationAnglesValue();
     return;
