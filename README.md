@@ -75,7 +75,7 @@ The installation follows the same steps needed usually to compile a self-contain
         $ # set folder to download the ardrone_autonomy ROS package
         $ rosws set ./extStack/ardrone_autonomy --git https://github.com/AutonomyLab/ardrone_autonomy.git
         $ # set folder to download the cvg_quadrotor_swarm ROS package
-        $ rosws set ./stack --git https://bitbucket.org/joselusl/quadrotor_swarm.git
+        $ rosws set ./stack --git https://github.com/Vision4UAV/cvg_quadrotor_swarm.git
         $ # download both packages using git, through the rosws command
         $ rosws update
         ```
