@@ -284,7 +284,7 @@ This software stack uses other third-party open-source libraries (some of them a
 
 - [Msc. Ramon Suarez](http://www.vision4uav.com/?q=ramon/personal "Msc. Ramon Suarez"): PhD. Candidate at [CVG](http://www.vision4uav.com/ "Computer Vision Group, CVG, CAR, UPM-CSIC"), CAR, CSIC-UPM.
 
-- [Professor Dr. Pascual Campoy](http://www.vision4uav.com/?q=pascual "Professor Dr. Pascual Campoy"): head of the , CAR, CSIC-UPM.
+- [Professor Dr. Pascual Campoy](http://www.vision4uav.com/?q=pascual "Professor Dr. Pascual Campoy"): head of the [CVG](http://www.vision4uav.com/ "Computer Vision Group, CVG, CAR, UPM-CSIC"), CAR, CSIC-UPM.
 
 
 ## Contact Information
