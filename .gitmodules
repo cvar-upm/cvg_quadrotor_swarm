@@ -225,6 +225,7 @@
 [submodule "stack/droneSimulators/droneSimulator/droneSimulator"]
 	path = stack/droneSimulators/droneSimulator/droneSimulator
 	url = https://bitbucket.org/jespestana/droneSimulator.git
+	branch = master
 [submodule "stack/droneSimulators/droneSimulator/droneSimulatorROSModule"]
 	path = stack/droneSimulators/droneSimulator/droneSimulatorROSModule
 	url = https://bitbucket.org/joselusl/dronesimulatorrosmodule.git
