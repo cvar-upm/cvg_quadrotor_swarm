@@ -17,7 +17,7 @@
 [submodule "stack/droneDrivers/driversPlatforms/driverParrotARDrone/ardrone_autonomy"]
 	path = stack/droneDrivers/driversPlatforms/driverParrotARDrone/ardrone_autonomy
 	url = https://github.com/AutonomyLab/ardrone_autonomy.git
-	branch = catkin
+	branch = indigo-devel
 [submodule "stack/droneDrivers/driversPlatforms/driverParrotARDrone/driverParrotARDroneROSModule"]
 	path = stack/droneDrivers/driversPlatforms/driverParrotARDrone/driverParrotARDroneROSModule
 	url = https://bitbucket.org/joselusl/driverparrotardronerosmodule.git
