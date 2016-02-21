@@ -1,3 +1,8 @@
+THIS IS AN OLD REPOSITORY NOT MAINTAINED ANYMORE!
+
+PLEASE, REFER TO THE CURRENT VERSION: https://github.com/Vision4UAV/Aerostack
+
+
 ## Safety Warning and Disclaimer
 
 You are using this software at your own risk. The authors decline any responsibility for personal injuries and/or property damage.
