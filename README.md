@@ -3,7 +3,7 @@
 ## Obsolete
 
 This repository is obsolete and it is not maintained anymore.
-Please, for an updated version, refer to Aerostack [https://github.com/cvar-upm/aerostack](https://github.com/cvar-upm/aerostack)
+Please, for an updated version, refer to Aerostack: [https://github.com/cvar-upm/aerostack](https://github.com/cvar-upm/aerostack)
 
 
 ## Safety Warning and Disclaimer
